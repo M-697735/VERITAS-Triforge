@@ -1,0 +1,18 @@
+From: newsletter@techweekly.org
+To: security-team@victimcorp.com
+Subject: Tech Weekly #42: Advances in Distributed Forensics
+Date: Mon, 20 Oct 2026 09:15:00 +0000
+Message-ID: <tw-42-20261020@techweekly.org>
+Authentication-Results: mx.victimcorp.com; dkim=pass header.i=@techweekly.org; spf=pass (google.com: domain of newsletter@techweekly.org designates 209.85.208.65 as permitted sender)
+Received: from mail-ed1-f65.google.com (mail-ed1-f65.google.com [209.85.208.65])
+    by mx.victimcorp.com with ESMTPS id abc123google
+    for <security-team@victimcorp.com>;
+    Mon, 20 Oct 2026 09:15:02 +0000
+Content-Type: text/plain; charset="utf-8"
+
+Welcome to Tech Weekly Issue #42.
+In this edition, we explore distributed email forensics, RFC 2047 internationalization,
+and zero-latency offline correlation engines.
+Best regards,
+The TechWeekly Editorial Staff
+Mountain View, CA, USA

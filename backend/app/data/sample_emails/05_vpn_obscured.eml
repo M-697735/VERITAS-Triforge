@@ -1,0 +1,20 @@
+From: David Miller <david.miller@techfirm.io>
+Reply-To: david.miller@techfirm.io
+To: alex@targetcompany.com
+Subject: Meeting follow up and technical architecture design proposal
+Date: Thu, 04 Sep 2026 10:00:00 +0000
+Message-ID: <vpn-005@techfirm.io>
+Received: from vpn-node-mullvad.net ([198.51.100.12]) by mx.targetcompany.com; Thu, 04 Sep 2026 10:00:00 +0000
+Authentication-Results: mx.targetcompany.com; spf=pass (sender IP 198.51.100.12) smtp.mailfrom=david.miller@techfirm.io; dkim=pass (signature verified) header.d=techfirm.io; dmarc=pass
+Content-Type: text/plain; charset=utf-8
+
+Hi Alex,
+
+Meeting follow up and technical architecture design proposal.
+Let me know if the proposed API integrations align with your sprint planning.
+
+Best regards,
+David Miller
+Lead Architect
+TechFirm Systems
+London, United Kingdom

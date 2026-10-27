@@ -1,0 +1,24 @@
+From: billing@swift-deliveries.biz
+To: payroll@victimcorp.com
+Subject: Overdue Invoice #INV-90214 with Wire Instructions
+Date: Thu, 23 Oct 2026 15:30:00 +0000
+Message-ID: <invoice-att-5541@swift-deliveries.biz>
+Received: from rogue-sender.org (rogue-sender.org [198.51.100.77])
+    by mx.victimcorp.com with ESMTP id att5541
+    for <payroll@victimcorp.com>;
+    Thu, 23 Oct 2026 15:30:03 +0000
+Content-Type: multipart/mixed; boundary="att_boundary_88"
+
+--att_boundary_88
+Content-Type: text/plain; charset="utf-8"
+
+Please find attached the signed contract and invoice statement.
+Prompt settlement is required.
+Accounts Payable
+--att_boundary_88
+Content-Type: application/octet-stream; name="Invoice_90214.pdf.js"
+Content-Disposition: attachment; filename="Invoice_90214.pdf.js"
+Content-Transfer-Encoding: base64
+
+Ly8gQmVuaWduIHNlY3VyaXR5IHRlc3Qgc2NyaXB0IGZvciBleHRlbnNpb24gZGV0ZWN0aW9uCmNvbnNvbGUubG9nKCd0ZXN0Jyk7Cg==
+--att_boundary_88--

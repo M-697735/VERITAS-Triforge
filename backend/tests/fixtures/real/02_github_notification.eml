@@ -1,0 +1,17 @@
+From: notifications@github.com
+To: dev-leads@victimcorp.com
+Subject: [GitHub] A security advisory was resolved in repository veritas/core
+Date: Mon, 20 Oct 2026 11:20:00 +0000
+Message-ID: <gh-alert-99182@github.com>
+Authentication-Results: mx.victimcorp.com; dkim=pass header.i=@github.com; dmarc=pass
+Received: from out-1.smtp.github.com (out-1.smtp.github.com [192.30.252.201])
+    by mx.victimcorp.com with ESMTPS id gh99182
+    for <dev-leads@victimcorp.com>;
+    Mon, 20 Oct 2026 11:20:02 +0000
+Content-Type: text/plain; charset="utf-8"
+
+Hi @team,
+A dependable security patch has been merged into main branch.
+All unit tests and regression gates passed successfully.
+GitHub Security Team
+San Francisco, CA, USA

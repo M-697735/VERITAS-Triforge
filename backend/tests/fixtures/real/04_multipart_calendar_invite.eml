@@ -1,0 +1,33 @@
+From: pm@partnercompany.com
+To: engineers@victimcorp.com
+Subject: Invitation: Architecture Review Sync @ Wed 10am
+Date: Tue, 21 Oct 2026 14:00:00 +0000
+Message-ID: <cal-inv-5544@partnercompany.com>
+Received: from mail.partnercompany.com (mail.partnercompany.com [198.51.100.15])
+    by mx.victimcorp.com with ESMTPS id cal778
+    for <engineers@victimcorp.com>;
+    Tue, 21 Oct 2026 14:00:04 +0000
+Content-Type: multipart/alternative; boundary="boundary_cal_44"
+
+--boundary_cal_44
+Content-Type: text/plain; charset="utf-8"
+
+Please join us for the Q4 Architecture Review Sync.
+Wednesday, October 22, 2026 at 10:00 AM UTC.
+--boundary_cal_44
+Content-Type: text/html; charset="utf-8"
+
+<html><body><p>Please join us for the <b>Q4 Architecture Review Sync</b>.</p></body></html>
+--boundary_cal_44
+Content-Type: text/calendar; method=REQUEST; charset="utf-8"
+
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//PartnerCompany//Calendar Sync//EN
+BEGIN:VEVENT
+SUMMARY:Architecture Review Sync
+DTSTART:20261022T100000Z
+DTEND:20261022T110000Z
+END:VEVENT
+END:VCALENDAR
+--boundary_cal_44--

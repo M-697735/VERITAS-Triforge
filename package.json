@@ -1,0 +1,13 @@
+{
+  "name": "veritas-root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VERITAS Email Forensics Platform",
+  "scripts": {
+    "predev": "npm --prefix frontend run predev:all",
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "test": "python backend/tests/verify_all.py",
+    "start": "python backend/run.py"
+  }
+}

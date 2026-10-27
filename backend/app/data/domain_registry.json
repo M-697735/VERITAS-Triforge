@@ -1,0 +1,26 @@
+{
+  "acmecorp.com": {
+    "domain_age_days": 1240,
+    "registrar": "MarkMonitor Inc."
+  },
+  "micros0ft-support.net": {
+    "domain_age_days": 3,
+    "registrar": "NameCheap Inc."
+  },
+  "globexcorp.com": {
+    "domain_age_days": 2100,
+    "registrar": "GoDaddy.com LLC"
+  },
+  "mail-relay-top.site": {
+    "domain_age_days": 14,
+    "registrar": "Dynadot LLC"
+  },
+  "trustedvendor.com": {
+    "domain_age_days": 890,
+    "registrar": "Network Solutions LLC"
+  },
+  "techfirm.io": {
+    "domain_age_days": 420,
+    "registrar": "NameCheap Inc."
+  }
+}

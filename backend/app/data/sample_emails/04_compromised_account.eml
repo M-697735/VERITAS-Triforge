@@ -1,0 +1,19 @@
+From: Accounts Payable <invoice@trustedvendor.com>
+Reply-To: invoice@trustedvendor.com
+To: accounts@targetcompany.com
+Subject: Updated banking details for invoice #88219
+Date: Thu, 04 Sep 2026 09:45:00 +0000
+Message-ID: <compromised-004@trustedvendor.com>
+Received: from vps-hetzner-smtp.net ([192.0.2.42]) by mx.targetcompany.com; Thu, 04 Sep 2026 09:45:00 +0000
+Authentication-Results: mx.targetcompany.com; spf=pass (sender IP 192.0.2.42) smtp.mailfrom=invoice@trustedvendor.com; dkim=pass (signature verified) header.d=trustedvendor.com; dmarc=pass
+Content-Type: text/plain; charset=utf-8
+
+Hello Finance Team,
+
+Updated banking details for invoice #88219 — please wire payment to our new bank account.
+Our banking institution has recently changed. Updated routing numbers are attached.
+
+Thank you,
+Accounts Payable Team
+Trusted Vendor Solutions
+Amsterdam, Netherlands

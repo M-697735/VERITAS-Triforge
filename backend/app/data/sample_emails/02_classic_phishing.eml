@@ -1,0 +1,21 @@
+From: Microsoft Security <security@micros0ft-support.net>
+Reply-To: verify@micros0ft-support.net
+To: victim@targetcompany.com
+Subject: URGENT: Your Microsoft 365 account will be suspended in 2 hours
+Date: Thu, 04 Sep 2026 09:15:00 +0000
+Message-ID: <phish-002@micros0ft-support.net>
+Received: from host.m247-bulletproof.net ([198.51.100.5]) by mx.targetcompany.com; Thu, 04 Sep 2026 09:15:00 +0000
+Authentication-Results: mx.targetcompany.com; spf=fail (sender IP 198.51.100.5) smtp.mailfrom=security@micros0ft-support.net; dkim=fail (invalid signature); dmarc=fail
+Content-Type: text/plain; charset=utf-8
+
+Dear User,
+
+Your Microsoft 365 account will be suspended in 2 hours due to unverified login attempts.
+You must reset your credential password immediately by clicking the link below:
+
+http://micros0ft-support.net/reset-password
+
+Failure to verify will result in immediate termination of email services and file access.
+
+Microsoft Security Team
+Microsoft Headquarters, Redmond, WA, USA

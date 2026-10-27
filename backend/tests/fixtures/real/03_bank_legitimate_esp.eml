@@ -1,0 +1,17 @@
+From: statements@firstnational-alerts.com
+To: accounting@victimcorp.com
+Subject: Your Monthly Enterprise Statement Is Ready for Download
+Date: Tue, 21 Oct 2026 08:00:00 +0000
+Message-ID: <ses-stmt-20261021@firstnational-alerts.com>
+Authentication-Results: mx.victimcorp.com; dkim=pass header.i=@firstnational-alerts.com; spf=pass (amazonses.com: 54.240.8.42 designates amazonses)
+Received: from a8-42.smtp-out.amazonses.com (a8-42.smtp-out.amazonses.com [54.240.8.42])
+    by mx.victimcorp.com with ESMTPS id ses10293
+    for <accounting@victimcorp.com>;
+    Tue, 21 Oct 2026 08:00:03 +0000
+Content-Type: text/plain; charset="utf-8"
+
+Dear Accounting Partner,
+Your monthly statement for period ending October 2026 is ready.
+You may review it inside your authenticated banking dashboard.
+First National Client Services
+New York, NY, USA

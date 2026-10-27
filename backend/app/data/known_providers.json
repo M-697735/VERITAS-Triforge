@@ -1,0 +1,50 @@
+[
+  {
+    "asn": "AS15169",
+    "provider": "Google LLC",
+    "domains": ["google.com", "gmail.com", "googlemail.com"],
+    "verification_source": "ARIN ASN Registry / Google Mail SPF & MX IP ranges"
+  },
+  {
+    "asn": "AS8075",
+    "provider": "Microsoft Corporation",
+    "domains": ["microsoft.com", "outlook.com", "hotmail.com", "live.com", "office365.com"],
+    "verification_source": "ARIN ASN Registry / Microsoft 365 Exchange Online endpoints"
+  },
+  {
+    "asn": "AS16509",
+    "provider": "Amazon.com (AWS / SES)",
+    "domains": ["amazonses.com", "amazon.com", "aws.com"],
+    "verification_source": "ARIN ASN Registry / Amazon Simple Email Service (SES)"
+  },
+  {
+    "asn": "AS11377",
+    "provider": "Twilio SendGrid",
+    "domains": ["sendgrid.net", "sendgrid.com"],
+    "verification_source": "ARIN ASN Registry / SendGrid ESP relay infrastructure"
+  },
+  {
+    "asn": "AS14782",
+    "provider": "Mailchimp / The Rocket Science Group",
+    "domains": ["mailchimp.com", "mandrillapp.com", "mcsv.net"],
+    "verification_source": "ARIN ASN Registry / Mailchimp & Mandrill outbound mail delivery"
+  },
+  {
+    "asn": "AS2639",
+    "provider": "Zoho Corporation",
+    "domains": ["zoho.com", "zohomail.com"],
+    "verification_source": "ARIN ASN Registry / Zoho Mail infrastructure"
+  },
+  {
+    "asn": "AS62378",
+    "provider": "Proton AG",
+    "domains": ["proton.me", "protonmail.com"],
+    "verification_source": "RIPE NCC ASN Registry / Proton Mail egress servers"
+  },
+  {
+    "asn": "AS209854",
+    "provider": "Proton AG (Secondary)",
+    "domains": ["proton.me", "protonmail.com"],
+    "verification_source": "RIPE NCC ASN Registry / Proton Mail secondary routing"
+  }
+]

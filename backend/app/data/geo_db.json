@@ -1,0 +1,86 @@
+{
+  "_meta": {
+    "dataset": "SIMULATED DEMO GEOIP DATASET - values are illustrative, not authoritative"
+  },
+  "203.0.113.45": {
+    "city": "Mumbai",
+    "country": "India",
+    "accuracy_radius_km": 15,
+    "asn": "AS17488",
+    "asn_org": "Hathway Cable & Datacom",
+    "is_datacenter": false,
+    "infra_category": "residential_isp"
+  },
+  "198.51.100.5": {
+    "city": "Bucharest",
+    "country": "Romania",
+    "accuracy_radius_km": 50,
+    "asn": "AS9009",
+    "asn_org": "M247 Europe SRL",
+    "is_datacenter": true,
+    "infra_category": "hosting_datacenter"
+  },
+  "198.51.100.88": {
+    "city": "Frankfurt",
+    "country": "Germany",
+    "accuracy_radius_km": 25,
+    "asn": "AS16509",
+    "asn_org": "Amazon.com Datacenter",
+    "is_datacenter": true,
+    "infra_category": "hosting_datacenter"
+  },
+  "192.0.2.42": {
+    "city": "Amsterdam",
+    "country": "Netherlands",
+    "accuracy_radius_km": 20,
+    "asn": "AS24940",
+    "asn_org": "Hetzner Online GmbH",
+    "is_datacenter": true,
+    "infra_category": "hosting_datacenter"
+  },
+  "198.51.100.12": {
+    "city": "London",
+    "country": "United Kingdom",
+    "accuracy_radius_km": 100,
+    "asn": "AS62005",
+    "asn_org": "Mullvad VPN / Exit Services",
+    "is_datacenter": true,
+    "infra_category": "vpn_exit"
+  },
+  "103.21.124.45": {
+    "city": "Mumbai",
+    "country": "India",
+    "accuracy_radius_km": 15,
+    "asn": "AS17488",
+    "asn_org": "Hathway Cable & Datacom",
+    "is_datacenter": false,
+    "infra_category": "residential_isp"
+  },
+  "185.220.101.5": {
+    "city": "Bucharest",
+    "country": "Romania",
+    "accuracy_radius_km": 50,
+    "asn": "AS9009",
+    "asn_org": "M247 Europe SRL",
+    "is_datacenter": true,
+    "infra_category": "hosting_datacenter"
+  },
+  "194.165.16.42": {
+    "city": "Amsterdam",
+    "country": "Netherlands",
+    "accuracy_radius_km": 20,
+    "asn": "AS24940",
+    "asn_org": "Hetzner Online GmbH",
+    "is_datacenter": true,
+    "infra_category": "hosting_datacenter"
+  },
+  "185.156.174.12": {
+    "city": "London",
+    "country": "United Kingdom",
+    "accuracy_radius_km": 100,
+    "asn": "AS62005",
+    "asn_org": "Mullvad VPN / Exit Services",
+    "is_datacenter": true,
+    "infra_category": "vpn_exit"
+  }
+}

@@ -1,0 +1,36 @@
+From: alice.analyst@victimcorp.com
+To: phish-report@veritas.internal
+Subject: FW: Action Required: Confirm Outlook 365 Password Reset
+Date: Wed, 22 Oct 2026 16:45:00 +0000
+Message-ID: <fwd-report-001@victimcorp.com>
+Received: from mail.victimcorp.com (mail.victimcorp.com [10.0.0.5])
+    by soc-ingest.victimcorp.com with ESMTP id rpt1234
+    for <phish-report@veritas.internal>;
+    Wed, 22 Oct 2026 16:45:01 +0000
+Content-Type: multipart/mixed; boundary="fwd_boundary_99"
+
+--fwd_boundary_99
+Content-Type: text/plain; charset="utf-8"
+
+Forwarding suspicious phishing lure received by employee inbox.
+Employee clicked nothing. Origin looks like rogue bulletproof host.
+--fwd_boundary_99
+Content-Type: message/rfc822
+Content-Disposition: attachment; filename="suspicious_lure.eml"
+
+From: admin@micr0soft-portal.xyz
+To: alice.analyst@victimcorp.com
+Subject: Action Required: Confirm Outlook 365 Password Reset
+Date: Wed, 22 Oct 2026 16:40:00 +0000
+Message-ID: <inner-lure-8877@micr0soft-portal.xyz>
+Received: from attack-node.xyz (attack-node.xyz [185.220.101.44])
+    by mx.victimcorp.com with ESMTP id in1092
+    for <alice.analyst@victimcorp.com>;
+    Wed, 22 Oct 2026 16:40:02 +0000
+Content-Type: text/plain; charset="utf-8"
+
+Your Microsoft 365 corporate account will be suspended within 24 hours.
+Click below to verify your credentials:
+http://micr0soft-portal.xyz/login
+Microsoft Security Team
+--fwd_boundary_99--
