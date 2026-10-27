@@ -266,3 +266,129 @@ def test_mock_imap_watcher(monkeypatch):
     st = watcher.get_status()
     assert 'super-secret-pw' not in str(st)
 
+def test_imap_api_endpoints_and_runtime_config(monkeypatch):
+    import imaplib
+    from fastapi.testclient import TestClient
+    from app.main import app, imap_watcher
+    from app.ingest import inbox_store
+
+    inbox_store.reset_inbox()
+
+    class MockIMAPSuccess:
+        def __init__(self, host, port):
+            pass
+        def login(self, u, p):
+            if p == 'wrong-pass':
+                raise Exception('Invalid credentials')
+        def select(self, folder, readonly=False):
+            return 'OK', [b'1']
+        def search(self, charset, criteria):
+            return 'OK', [b'']
+        def close(self):
+            pass
+        def logout(self):
+            pass
+
+    monkeypatch.setattr(imaplib, 'IMAP4_SSL', MockIMAPSuccess)
+    client = TestClient(app)
+
+    # 1. GET /api/ingest/imap/config
+    r = client.get('/api/ingest/imap/config')
+    assert r.status_code == 200
+    assert 'password' not in r.json()
+
+    # 2. POST /api/ingest/imap/test with wrong pass
+    r = client.post('/api/ingest/imap/test', json={
+        'host': 'imap.gmail.com',
+        'port': 993,
+        'user': 'demo@gmail.com',
+        'password': 'wrong-pass',
+        'folder': 'INBOX',
+        'use_ssl': True
+    })
+    assert r.status_code == 200
+    res = r.json()
+    assert res['success'] is False
+    assert 'wrong-pass' not in str(res)
+
+    # 3. POST /api/ingest/imap/test with valid pass
+    r = client.post('/api/ingest/imap/test', json={
+        'host': 'imap.gmail.com',
+        'port': 993,
+        'user': 'demo@gmail.com',
+        'password': 'good-password-1234',
+        'folder': 'INBOX',
+        'use_ssl': True
+    })
+    assert r.status_code == 200
+    res = r.json()
+    assert res['success'] is True
+
+    # 4. POST /api/ingest/imap/configure (runtime only)
+    r = client.post('/api/ingest/imap/configure', json={
+        'host': 'imap.gmail.com',
+        'port': 993,
+        'user': 'demo@gmail.com',
+        'password': 'good-password-1234',
+        'folder': 'INBOX',
+        'use_ssl': True,
+        'poll_interval': 10.0
+    })
+    assert r.status_code == 200
+    assert r.json()['status'] == 'CONNECTED'
+    assert 'good-password-1234' not in str(r.json())
+
+    # 5. POST /api/ingest/imap/sync
+    r = client.post('/api/ingest/imap/sync')
+    assert r.status_code == 200
+    assert r.json()['status'] == 'ok'
+
+    # 6. POST /api/ingest/imap/disconnect
+    r = client.post('/api/ingest/imap/disconnect')
+    assert r.status_code == 200
+    assert r.json()['status'] == 'STOPPED'
+
+def test_imap_processing_order_seen_flag_on_success(monkeypatch):
+    import imaplib
+    from app.ingest.imap_watcher import ImapWatcher
+    from app.ingest import inbox_store
+
+    inbox_store.reset_inbox()
+    stored_flags = []
+    
+    class MockOrderIMAP:
+        def __init__(self, host, port):
+            pass
+        def login(self, u, p):
+            pass
+        def select(self, folder):
+            return 'OK', [b'1']
+        def search(self, charset, criteria):
+            return 'OK', [b'1 2']
+        def fetch(self, num, query):
+            # Message 1 is valid, Message 2 will raise an error
+            if num == b'1':
+                raw = read_fixture('01_gmail_newsletter.eml')
+                return 'OK', [(b'1 (RFC822 {1000}', raw)]
+            else:
+                return 'OK', None
+        def store(self, num, command, flags):
+            stored_flags.append((num, command, flags))
+        def close(self):
+            pass
+        def logout(self):
+            pass
+
+    monkeypatch.setattr(imaplib, 'IMAP4_SSL', MockOrderIMAP)
+
+    watcher = ImapWatcher()
+    watcher.configure('imap.test.com', 993, 'test@test.com', 'secret-pw', auto_start=False)
+
+    processed = watcher.check_once()
+    assert processed == 1
+    # Only message 1 had \Seen flag stored; message 2 failed fetch/parse and was NOT marked \Seen
+    assert len(stored_flags) == 1
+    assert b'1' in stored_flags[0][0]
+    assert '\\Seen' in stored_flags[0][2]
+
+

@@ -298,6 +298,72 @@ async def get_ingestion_status():
         "imap": imap_watcher.get_status()
     }
 
+@app.get("/api/ingest/imap/config")
+async def get_imap_config():
+    return imap_watcher.get_status()
+
+@app.post("/api/ingest/imap/test")
+async def test_imap_connection_endpoint(payload: Dict[str, Any]):
+    host = payload.get("host", "").strip()
+    port = int(payload.get("port", 993))
+    user = payload.get("user", "").strip()
+    password = payload.get("password", "").strip()
+    folder = payload.get("folder", "INBOX").strip()
+    use_ssl = payload.get("use_ssl", True)
+    
+    if not (host and user and password):
+        raise HTTPException(status_code=400, detail="Missing required IMAP connection parameters (host, user, password).")
+        
+    res = imap_watcher.test_connection(host, port, user, password, folder, use_ssl)
+    return res
+
+@app.post("/api/ingest/imap/configure")
+async def configure_imap_endpoint(payload: Dict[str, Any]):
+    host = payload.get("host", "").strip()
+    port = int(payload.get("port", 993))
+    user = payload.get("user", "").strip()
+    password = payload.get("password", "").strip()
+    folder = payload.get("folder", "INBOX").strip()
+    use_ssl = payload.get("use_ssl", True)
+    poll_interval = float(payload.get("poll_interval", 10.0))
+    
+    if not password and imap_watcher.is_configured() and imap_watcher.user == user:
+        password = imap_watcher.password
+        
+    if not (host and user and password):
+        raise HTTPException(status_code=400, detail="Missing required parameters (host, user, password).")
+        
+    test_res = imap_watcher.test_connection(host, port, user, password, folder, use_ssl)
+    if not test_res.get("success"):
+        raise HTTPException(status_code=400, detail=test_res.get("error", "Failed to connect to IMAP server."))
+        
+    imap_watcher.configure(host, port, user, password, folder, use_ssl, poll_interval)
+    
+    return {
+        "status": "CONNECTED",
+        "message": "IMAP watcher successfully configured and started.",
+        "config": imap_watcher.get_status()
+    }
+
+@app.post("/api/ingest/imap/disconnect")
+async def disconnect_imap_endpoint():
+    imap_watcher.disconnect()
+    return {"status": "STOPPED", "message": "IMAP watcher disconnected."}
+
+@app.post("/api/ingest/imap/sync")
+async def sync_imap_endpoint():
+    if not imap_watcher.is_configured():
+        raise HTTPException(status_code=400, detail="IMAP watcher is not configured.")
+    try:
+        processed = imap_watcher.check_once()
+        return {
+            "status": "ok",
+            "processed": processed,
+            "message": f"Sync completed. Processed {processed} new email(s)."
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Sync error: {str(e)}")
+
 @app.post("/api/report/pdf")
 async def download_pdf_report(payload: Dict[str, Any]):
     case_id = payload.get("case_id")

@@ -44,23 +44,43 @@ def _save_inbox(items: List[Dict[str, Any]]):
         os.fsync(f.fileno())
     os.replace(tmp_path, path)
 
+def has_inbox_sha256(sha256_hash: str) -> bool:
+    if not sha256_hash:
+        return False
+    with _lock:
+        items = _load_inbox()
+        for it in items:
+            if it.get('sha256_hash') == sha256_hash:
+                return True
+        return False
+
 def add_inbox_item(analysis_payload: Dict[str, Any], source: str = 'dropfolder', reporter: Optional[str] = None, filename: str = 'reported.eml') -> Dict[str, Any]:
     with _lock:
         items = _load_inbox()
+        sha = analysis_payload.get('sha256_hash', '')
+        if sha:
+            for existing in items:
+                if existing.get('sha256_hash') == sha:
+                    return existing
+
         inbox_id = f'INBOX-{secrets.token_hex(4).upper()}'
         now_utc = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        
+        email_meta = analysis_payload.get('email_meta', {})
+        from_val = email_meta.get('from') or email_meta.get('from_header', '')
+        to_val = email_meta.get('to') or email_meta.get('to_header', '')
         
         rep = reporter
         if not rep:
             if analysis_payload.get('is_forwarded_report'):
                 rep = analysis_payload.get('reported_by') or 'Unknown Reporter'
             else:
-                rep = analysis_payload.get('email_meta', {}).get('from') or 'Direct Ingestion'
+                rep = from_val or 'Direct Ingestion'
                 
         summary = {
-            'subject': analysis_payload.get('email_meta', {}).get('subject', '(No Subject)'),
-            'from': analysis_payload.get('email_meta', {}).get('from', ''),
-            'to': analysis_payload.get('email_meta', {}).get('to', ''),
+            'subject': email_meta.get('subject', '(No Subject)'),
+            'from': from_val,
+            'to': to_val,
             'verdict': analysis_payload.get('verdict', {}).get('verdict', 'Unknown'),
             'risk_score': analysis_payload.get('verdict', {}).get('risk_score', 0),
             'contradictions': analysis_payload.get('contradictions', []),
@@ -74,7 +94,7 @@ def add_inbox_item(analysis_payload: Dict[str, Any], source: str = 'dropfolder',
             'reviewed': False,
             'reporter': rep,
             'filename': filename,
-            'sha256_hash': analysis_payload.get('sha256_hash', ''),
+            'sha256_hash': sha,
             'saved_case_id': None,
             'summary': summary,
             'analysis': analysis_payload

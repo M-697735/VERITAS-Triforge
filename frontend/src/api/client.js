@@ -111,4 +111,30 @@ export const fetchIngestStatus = async () => {
   return response.data;
 };
 
+export const fetchImapConfig = async () => {
+  const response = await axios.get(`${API_BASE}/ingest/imap/config`);
+  return response.data;
+};
+
+export const testImapConnection = async (config) => {
+  const response = await axios.post(`${API_BASE}/ingest/imap/test`, config);
+  return response.data;
+};
+
+export const configureImap = async (config) => {
+  const response = await axios.post(`${API_BASE}/ingest/imap/configure`, config);
+  return response.data;
+};
+
+export const disconnectImap = async () => {
+  const response = await axios.post(`${API_BASE}/ingest/imap/disconnect`);
+  return response.data;
+};
+
+export const syncImapNow = async () => {
+  const response = await axios.post(`${API_BASE}/ingest/imap/sync`);
+  return response.data;
+};
+
+
 
